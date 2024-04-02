@@ -1,4 +1,5 @@
 import {
+  Badge,
   Navbar,
   Nav,
   Container,
@@ -7,10 +8,12 @@ import {
   NavbarBrand,
   NavLink,
 } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 import { LinkContainer } from 'react-router-bootstrap';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
 
 const Header = () => {
+  const { cartItems } = useSelector((state) => state.cart);
   return (
     <header>
       <Navbar bg='dark' variant='dark' expand='md' collapseOnSelect>
@@ -24,6 +27,11 @@ const Header = () => {
               <LinkContainer to='/cart'>
                 <NavLink>
                   <FaShoppingCart /> Cart
+                  {cartItems.length > 0 && (
+                    <Badge pill bg='success' style={{ marginLeft: '5px' }}>
+                      {cartItems.reduce((acc, curr) => acc + curr.qty, 0)}
+                    </Badge>
+                  )}
                 </NavLink>
               </LinkContainer>
               <LinkContainer to='/login'>
