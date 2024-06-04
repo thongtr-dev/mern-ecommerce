@@ -37,7 +37,7 @@ const ShippingScreen = () => {
             placeholder='Enter address'
             value={address}
             onChange={(e) => setAddress(e.target.value)}
-          ></Form.Control>
+          />
         </Form.Group>
         <Form.Group controlId='city' className='my-2'>
           <Form.Label>City</Form.Label>
@@ -46,7 +46,7 @@ const ShippingScreen = () => {
             placeholder='Enter city'
             value={city}
             onChange={(e) => setCity(e.target.value)}
-          ></Form.Control>
+          />
         </Form.Group>
         <Form.Group controlId='postalCode' className='my-2'>
           <Form.Label>Postal code</Form.Label>
@@ -55,7 +55,7 @@ const ShippingScreen = () => {
             placeholder='Enter postal code'
             value={postalCode}
             onChange={(e) => setPostalCode(e.target.value)}
-          ></Form.Control>
+          />
         </Form.Group>
         <Form.Group controlId='country' className='my-2'>
           <Form.Label>Country</Form.Label>
@@ -64,7 +64,7 @@ const ShippingScreen = () => {
             placeholder='Enter country'
             value={country}
             onChange={(e) => setCountry(e.target.value)}
-          ></Form.Control>
+          />
         </Form.Group>
 
         <Button type='submit' variant='primary' className='my-2'>
