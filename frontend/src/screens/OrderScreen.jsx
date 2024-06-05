@@ -78,7 +78,7 @@ const OrderScreen = () => {
   };
 
   const onError = (error) => {
-    toast.error(error.message);
+    toast.error(error?.data?.message || error.message);
   };
 
   const createOrder = (data, actions) => {
@@ -98,7 +98,7 @@ const OrderScreen = () => {
   return isLoading ? (
     <Loader />
   ) : error ? (
-    <Message variant='danger'>{error.data.message}</Message>
+    <Message variant='danger'>{error?.data?.message || error.message}</Message>
   ) : (
     <>
       <h1>Order {order._id}</h1>
