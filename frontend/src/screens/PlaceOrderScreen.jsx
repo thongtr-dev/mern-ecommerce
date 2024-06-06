@@ -38,7 +38,7 @@ const PlaceOrderScreen = () => {
       dispatch(clearCartItems());
       navigate(`/order/${res._id}`);
     } catch (error) {
-      toast.error(error?.data?.message || error.message);
+      toast.error(error?.data?.message);
     }
   };
 
@@ -125,7 +125,7 @@ const PlaceOrderScreen = () => {
               <ListGroup.Item>
                 {error && (
                   <Message variant='danger'>
-                    {error?.data?.message || error.error}
+                    {error?.data || error?.error}
                   </Message>
                 )}
               </ListGroup.Item>
