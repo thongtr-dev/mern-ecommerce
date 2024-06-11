@@ -44,7 +44,7 @@ const UserEditScreen = () => {
       isAdmin,
     };
     try {
-      await updateUser(updatedUser);
+      await updateUser(updatedUser).unwrap();
       toast.success('User updated');
       refetch();
       navigate('/admin/user-list');
