@@ -17,6 +17,7 @@ import { logout } from '../slices/authSlice';
 import { resetCart } from '../slices/cartSlice';
 import { LinkContainer } from 'react-router-bootstrap';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
+import SearchBox from './SearchBox';
 
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -48,6 +49,7 @@ const Header = () => {
           <NavbarToggle aria-controls='basic-navbar-nav' />
           <NavbarCollapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
+              <SearchBox />
               <LinkContainer to='/cart'>
                 <NavLink>
                   <FaShoppingCart /> Cart
