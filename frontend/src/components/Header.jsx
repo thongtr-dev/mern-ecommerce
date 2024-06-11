@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   Badge,
   Navbar,
@@ -10,7 +11,7 @@ import {
   NavLink,
   NavDropdown,
 } from 'react-bootstrap';
-import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
 import { resetCart } from '../slices/cartSlice';
@@ -33,7 +34,7 @@ const Header = () => {
       dispatch(resetCart());
       navigate('/login');
     } catch (error) {
-      console.log(error);
+      toast.error(error?.data?.message);
     }
   };
 

@@ -22,9 +22,7 @@ function fileFilter(req, file, cb) {
   const extName = fileTypes.test(
     path.extname(file.originalname).toLocaleLowerCase()
   );
-  console.log(extName);
   const mimeType = mimeTypes.test(file.mimetype);
-  console.log(mimeType);
 
   if (extName && mimeType) {
     cb(null, true);
