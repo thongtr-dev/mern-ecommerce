@@ -13,6 +13,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
+import { resetCart } from '../slices/cartSlice';
 import { LinkContainer } from 'react-router-bootstrap';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
 
@@ -29,6 +30,7 @@ const Header = () => {
     try {
       await logoutApiCall().unwrap();
       dispatch(logout());
+      dispatch(resetCart());
       navigate('/login');
     } catch (error) {
       console.log(error);
