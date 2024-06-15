@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Table, Form, Button, Row, Col } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import Message from '../components/Message';
@@ -108,7 +108,9 @@ const ProfileScreen = () => {
         {isLoading ? (
           <Loader />
         ) : error ? (
-          <Message variant='danger'>{error?.data?.message || error.error}</Message>
+          <Message variant='danger'>
+            {error?.data?.message || error.error}
+          </Message>
         ) : (
           <Table striped hover responsive className='table-sm'>
             <thead>
@@ -142,11 +144,14 @@ const ProfileScreen = () => {
                     )}
                   </td>
                   <td>
-                    <LinkContainer to={`/order/${order._id}`}>
-                      <Button className='btn-sm' variant='light'>
-                        Details
-                      </Button>
-                    </LinkContainer>
+                    <Button
+                      as={Link}
+                      to={`/order/${order._id}`}
+                      className='btn-sm'
+                      variant='light'
+                    >
+                      Details
+                    </Button>
                   </td>
                 </tr>
               ))}

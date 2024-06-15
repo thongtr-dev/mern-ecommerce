@@ -1,4 +1,4 @@
-import { LinkContainer } from 'react-router-bootstrap';
+import { Link } from 'react-router-dom';
 import { Table, Button } from 'react-bootstrap';
 import { FaTrash, FaEdit, FaCheck, FaTimes } from 'react-icons/fa';
 import Message from '../../components/Message';
@@ -33,7 +33,9 @@ const UserListScreen = () => {
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <Message variant='danger'>{error?.data?.message || error.error}</Message>
+        <Message variant='danger'>
+          {error?.data?.message || error.error}
+        </Message>
       ) : (
         <Table striped hover responsive className='table-sm'>
           <thead>
@@ -59,11 +61,14 @@ const UserListScreen = () => {
                   )}
                 </td>
                 <td>
-                  <LinkContainer to={`/admin/user/${user._id}/edit`}>
-                    <Button variant='light' className='btn-sm'>
-                      <FaEdit />
-                    </Button>
-                  </LinkContainer>
+                  <Button
+                    as={Link}
+                    to={`/admin/user/${user._id}/edit`}
+                    variant='light'
+                    className='btn-sm'
+                  >
+                    <FaEdit />
+                  </Button>
                   <Button
                     variant='danger'
                     className='btn-sm'

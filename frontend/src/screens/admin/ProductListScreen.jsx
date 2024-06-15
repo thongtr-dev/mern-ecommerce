@@ -1,5 +1,4 @@
-import { useParams } from 'react-router-dom';
-import { LinkContainer } from 'react-router-bootstrap';
+import { useParams, Link } from 'react-router-dom';
 import { Table, Button, Row, Col } from 'react-bootstrap';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import Message from '../../components/Message';
@@ -65,7 +64,9 @@ const ProductListScreen = () => {
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <Message variant='danger'>{error?.data?.message || error.error}</Message>
+        <Message variant='danger'>
+          {error?.data?.message || error.error}
+        </Message>
       ) : (
         <>
           <Table striped hover responsive className='table-sm'>
@@ -86,11 +87,14 @@ const ProductListScreen = () => {
                   <td>{product.category}</td>
                   <td>{product.brand}</td>
                   <td>
-                    <LinkContainer to={`/admin/product/${product._id}/edit`}>
-                      <Button variant='light' className='btm-sm mx-2'>
-                        <FaEdit />
-                      </Button>
-                    </LinkContainer>
+                    <Button
+                      as={Link}
+                      to={`/admin/product/${product._id}/edit`}
+                      variant='light'
+                      className='btm-sm mx-2'
+                    >
+                      <FaEdit />
+                    </Button>
                     <Button
                       variant='danger'
                       className='btn-sm'
